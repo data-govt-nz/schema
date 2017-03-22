@@ -28,7 +28,7 @@ The data.json schema:
 | contactPoint | Yes |`"contactPoint": {"@type": "vcard:Contact","fn": "Jane Doe","hasEmail": "mailto:jane.doe@agency.gov", "hasPhone": "1234567890"}`|Contact for the specific dataset in vCard format including full name (`fn`), email(`hasEmail`) and optionally, phone (`hasPhone`) of the contact person.|
 | distribution | Yes | See "Distribution" table below. | Location for accessing/downloading the data files or accessing APIs. |
 | landingPage | No | `https://webtoolkit.govt.nz/guidance/domain-names/new-zealand-public-sector-websites/` | URL of a web page specifically about the dataset and includes links to data files and supplimentary information about the dataset. |
-| references | No | `["https://webtoolkit.govt.nz/guidance/domain-names/new-zealand-public-sector-websites/"]` <br> OR in data.json you can specify more than one reference like a distribution e.g. <br> `[{"url": "", "title": "", "format": ""},{"url": "", "title": "", "format": ""},]` | URL of a web page, PDF or other documentation that gives more information about the dataset. Note: Use landingPage instead for a resource URL if that is more appropriate. Should be an array, to allow multiple references to be specified. |
+| references | No | `["https://webtoolkit.govt.nz/guidance/domain-names/new-zealand-public-sector-websites/"]` <br> OR in data.json you can specify more than one reference like a distribution e.g. <br> `[{"url": "", "title": "", "format": ""},{"url": "", "title": "", "format": ""},]`. Useful for providing links to data dictionaries and vocabularies.| URL of a web page, PDF or other documentation that gives more information about the dataset. Note: Use landingPage instead for a resource URL if that is more appropriate. Should be an array, to allow multiple references to be specified. |
 | language | No | `["en"]` | Language of the data in [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) format. Should be an array of values `["en", "mi", ...]`.|
 | accrualPeriodicity | No | `R/P1Y` (=annual) <br> `R/P1W` (=weekly) | The frequency at which dataset is published. Format: ISO 8601 Repeating Duration (or `irregular`) See: <https://project-open-data.cio.gov/iso8601_guidance/#accrualperiodicity> |
 | temporal | No | `2000-01-15/2000-01-20` `2010-01/2010-03` `2010/2010` | The date period that the data applies to. Formatted as two ISO 8601 dates (or datetimes) separated by a slash. If the period in question is a whole year or whole month, just put the same value for start and finish - eg `2010/2010` or `2010-06/2010-06`. |
@@ -39,67 +39,60 @@ The data.json schema:
 
 These are for direct links to downloadable **data** files or access points for APIs etc.
 
-| data.json field | DCAT predicate | Example value | Comments |
+| data.json field | Required? | Example value | Comments |
 | --------------- | -------------- | ------------- | -------- |
-| downloadURL | dcat:downloadURL | `http://site.gov.uk/river-levels/dec2012.csv` | The direct URL that downloads a file with the data |
-| accessURL | dcat:accessURL | `http://www.site.gov.uk/api/sparql` <br> `http://site.gov.uk/river-level-data.html` | If there is not a downloadURL, specify the accessURL, which is the URL of an API or other non-downloadable data (NB documentation or other web pages should not be distributions) |
-| title | dct:title | Spend transactions, Dec 2012 |
-| description | dct:description | | Not currently displayed on DGU |
-| format | dcat:mediaType | `text/csv` | Currently recognized mime-types are listed here: [DGU formats](https://github.com/datagovuk/ckanext-dgu/blob/master/ckanext/dgu/lib/formats.py#L86) |
-| conformsTo | dct:conformsTo | `http://schemas.opendata.esd.org.uk/publictoilets/PublicToilets.json?v=0.41` | URL of the machine-readable schema that the data conforms to. See: [Harvesting - Local Authority data schemas](http://guidance.data.gov.uk/harvesting.html#local-authority-data-schemas). |
-| temporal | dct:temporal | `2000-01-15/2000-01-20` `2010-01/2010-03` `2010/2010` | The date period that the data applies to. Formatted as two ISO 8601 dates (or datetimes) separated by a slash. If the period in question is a whole year or whole month, just put the same value for start and finish - eg `2010/2010` or `2010-06/2010-06`. data.gov.uk only stores the first date of the pair in the "date" field, and if the 2 dates are different, it adds the range into the "name" field. |
-| spatial |  dct:spatial | `{\"type\":\"Polygon\",\"coordinates\":[[[2.072, 49.943],[2.072, 55.816], [-6.236, 55.816], [-6.236, 49.943], [2.072, 49.943]]]}` | The geographic location that the data applies to. If not specified, then it is inherited from the dataset if not its publisher. Formatted as a GeoJSON point, bounding box or polygon. |
-| identifier | (equivalent to RDF object's URI or) dct:identifier | `https://data.some.org/catalog/datasets/9df8df51-63db-37a8-e044-0003ba9b0d98/resource/4252f71c-4f2f-4e37-ab4e-b58b4ac255bb` | Optional. Use it to help CKAN keep track of a distribution that has changing properties (e.g. a new URL or format), or for DCAT compliance. Must be globally unique - not just unique to the publisher. A URI is highly recommended (ideally one that returns a web page about the distribution). |
+| downloadURL | Yes, or accessURL (see below) | `https://webtoolkit.govt.nz/files/PublicSectorWebsites01April2015.csv` | The direct URL that downloads a file with the data |
+| accessURL | No, unless no dowloadURL | `https://webtoolkit.govt.nz/guidance/domain-names/new-zealand-public-sector-websites/`| If there is not a `downloadURL` to a downloadable file then specify the `accessURL`. This is the URL of an API or other non-downloadable data location.|
+| title | Yes | `Exposure to second hand smoke` | A descriptive title of the data resource. 50 - 70 characters preferred (CKAN concatenates long title strings).|
+| description | No | 'A study from 2015 on the effects of exposure to second hand smoke ...' | If you need to describe a particular data file further you can supply a description. 100 - 200 characters preferred. |
+| format | No | `text/csv` or `csv` | Mime-types or file extensions. |
 
 ## data.json file structure
 
 The data.json file should be structured as an array "[ ... ]" of dataset objects "{ ... }".
 
+```
 e.g.
 
     [
-     {"title": "Live traffic information from the Highways Agency",
-      "license": "No license provided",
-      "publisher": {"name": "Highways Agency", "mbox": "test@test.com"},
+     {"title": "Chief Executive Expenses",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "publisher": {"name": "Publisher Agency", "mbox": "test@test.com"},
       "distribution": [
         {
-          "downloadURL": "https://s3-eu-west-1.amazonaws.com/lmtesting2810/HATRIS_15MinuteMIDAS_YYYY-MM-DD_0.csv.zip",
-          "title": "Hatris 15 Min Midas 0",
-          "format": "application/zip"
-        }]
+          "downloadURL": "https://agency.govt.nz/link/to/ce_expenses_2016.csv",
+          "title": "Chief Executive Expenses for 2016",
+          "format": "csv"
+        },
+        {
+          "downloadURL": "https://agency.govt.nz/link/to/ce_expenses_2015.csv",
+          "title": "Chief Executive Expenses for 2015",
+          "format": "csv"
+        },
+        ]
      },
      {"title": "Roadworks locations",
        ...
      }
     ]
-
-Alternatively, you can put this information inside a catalogue object under the key "datasets". Although data.gov.uk doesn't harvest the catalogue data, allowing this structure gives reasonable compatibility with Project Open Data.
+```
 
 ## Character encoding
 
 The data.json file should have ASCII or UTF-8 character encoding (as per the JSON standard). The harvester now detects this and gives an error if it is not acceptable.
 
-## Namespaces
-
-| dcat | http://www.w3.org/ns/dcat# |
-| dct | http://purl.org/dc/terms/ |
-| rdfs | http://www.w3.org/2000/01/rdf-schema# |
-
 ## Comparison with USA data.json schema
 
-The UK data.json format is based on the Project Open Data data.json schema used by the U.S. Federal Government and agencies: <https://project-open-data.cio.gov/v1.1/schema/>
+The NZ data.json format is based on both the [Data.gov.uk data.json](http://guidance.data.gov.uk/dcat_fields.html) and the [Project Open Data data.json schema](https://project-open-data.cio.gov/v1.1/schema/) used by the U.S. Federal Government. Both are derivatives of the [DCAT (data catalog vocabulary)](https://www.w3.org/TR/vocab-dcat/) schema standard.
 
-However there are a few conscious differences that are listed here for reference:
+There are a few conscious differences that are listed here for reference:
 
 | Field | Change | Explanation |
 | ----- | ------ | ----------- |
 | bureauCode, programCode, primaryITInvestmentUII, systemOfRecords, dataQuality | not required | They are codes specific to US Federal Government |
-| temporal, spatial | Can be applied to not just a dataset but also distributions. | e.g. Spend data is split up by months |
 | spatial | Formatted with GeoJSON | GeoJSON is analagous to GML but preferred. Place name strings are not preferred as they can be ambiguous. |
-| theme | The values are URIs from known classification vocabularies, rather than simply strings. | A catalogue chooses its own classification vocabularies, so there is little value in simple strings determined by the data publisher. Strings related to the data's topic can go in the keywords field. |
+| theme | The values known group values from data.govt.nz CKAN portal, rather than simply strings. | Data.govt.nz has a group taxonomy. Strings related to the data's specific topics can go in the keywords field. |
 
-
- 
  ## Validating your json feed
  
  
