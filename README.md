@@ -33,7 +33,7 @@ The data.json schema:
 | accrualPeriodicity | No | `R/P1Y` (=annual) <br> `R/P1W` (=weekly) | The frequency at which dataset is published. Format: ISO 8601 Repeating Duration (or `irregular`) See: <https://project-open-data.cio.gov/iso8601_guidance/#accrualperiodicity> |
 | temporal | No | `2000-01-15/2000-01-20` `2010-01/2010-03` `2010/2010` | The date period that the data applies to. Formatted as two ISO 8601 dates (or datetimes) separated by a slash. If the period in question is a whole year or whole month, just put the same value for start and finish - eg `2010/2010` or `2010-06/2010-06`. |
 | spatial |  No | `{\"type\":\"Polygon\",\"coordinates\":[[[2.072, 49.943],[2.072, 55.816], [-6.236, 55.816], [-6.236, 49.943], [2.072, 49.943]]]}` | The geographic location that the data applies to. If not specified, then it is inherited from the dataset's publisher. Formatted as a GeoJSON point, bounding box or polygon. |
-| theme | No | `"theme": "Fiscal, tax and economics",` or `"theme": []"Fiscal, tax and economics", "Health"],`| The main group(s) in data.govt.nz you would like to classify your dataset under to improve discoverability. Can be a single group or list. See [https://catalogue.data.govt.nz/group](https://catalogue.data.govt.nz/group)|
+| theme | No | `"theme": "Fiscal, tax and economics",` or `"theme": ["Fiscal, tax and economics", "Health"],`| The main group(s) in data.govt.nz you would like to classify your dataset under to improve discoverability. Can be a single group or list. See [https://catalogue.data.govt.nz/group](https://catalogue.data.govt.nz/group)|
 
 ## Distribution
 
@@ -94,10 +94,11 @@ There are a few conscious differences that are listed here for reference:
 | theme | The values known group values from data.govt.nz CKAN portal, rather than simply strings. | Data.govt.nz has a group taxonomy. Strings related to the data's specific topics can go in the keywords field. |
 
  ## Validating your json feed
- 
+ TODO
  
  
  ## comparing the ATOM and json schema
+ TODO
  
  
  
