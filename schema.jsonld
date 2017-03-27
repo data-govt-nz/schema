@@ -6,7 +6,6 @@
     "foaf": "http://xmlns.com/foaf/0.1/",
     "@vocab": "http://www.w3.org/ns/dcat#",
     "dc": "http://purl.org/dc/terms/",
-    "pod": "https://project-open-data.cio.gov/v1.1/schema#",
     "skos": "http://www.w3.org/2004/02/skos/core#",
     "describedBy": {
       "@id": "http://www.w3.org/2007/05/powder#describedby",
@@ -44,15 +43,9 @@
     "format": "dc:format",
     "accrualPeriodicity": "dc:accrualPeriodicity",
     "homepage": "foaf:homepage",
-    "accessLevel": "pod:accessLevel",
-    "bureauCode": "pod:bureauCode",
-    "dataQuality": "pod:dataQuality",
-    "describedByType": "pod:describedByType",
-    "primaryITInvestmentUII": "pod:primaryITInvestmentUII",
-    "programCode": "pod:programCode",
     "fn": "vcard:fn",
     "hasEmail": "vcard:email",
-    "name": "skos:prefLabel",
-    "subOrganizationOf": "org:subOrganizationOf"
+    "hasPhone": "vcard:phone",
+    "name": "skos:prefLabel"
   }
 }
