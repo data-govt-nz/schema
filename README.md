@@ -77,6 +77,12 @@ e.g.
     ]
 ```
 
+## Where to put your data.json file
+
+Ideally this should reside at **https://YOURORGANISATION.govt.nz/data.json**, however as long as the url is public and conforms to the schema standard, it can be harvested into data.govt.nz.
+
+Once you have this file in place, contact data.govt.nz support team and let them know the location and how often you will likely update this file with new and updated datasets.
+
 ## Character encoding
 
 The data.json file should have ASCII or UTF-8 character encoding (as per the JSON standard). The harvester now detects this and gives an error if it is not acceptable.
