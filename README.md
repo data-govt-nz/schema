@@ -89,7 +89,7 @@ For example:
 
 `"publisher": {"name": ""}` in the json file would be stored in the CSV file column with the heading `publisher.name`.
 
-See the `example.csv` to get an idea of how to prepare this file for conversion.
+See the [`example.csv`](https://github.com/data-govt-nz/schema/blob/master/example.csv) to get an idea of how to prepare this file for conversion.
 
 ### What to do when a dataset has many related files?
 No problem, the CSV format can handle this situation. All the metadata relating to the dataset and files is entered on the same row in the CSV file.
