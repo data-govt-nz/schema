@@ -337,7 +337,6 @@ app.get('/', function (req, res) {
 	} else if (req.query.page == '2') {
 		res.send(page2);
 	} else {
-		res.send(datajson);
 	}
 });
 
