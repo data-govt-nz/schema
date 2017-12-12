@@ -3,6 +3,10 @@ var heredoc = require('heredoc')
 
 var app = express();
 
+// set the port of our application
+// process.env.PORT lets the port be set by Heroku
+var port = process.env.PORT || 8080;
+
 var datajson = heredoc(function () {/*
 	{
 		"@context": "https://project-open-data.cio.gov/v1.1/schema/catalog.jsonld",
@@ -338,6 +342,6 @@ app.get('/', function (req, res) {
 });
 
 
-app.listen(3000, function () {
+app.listen(port, function () {
   console.log('Serve up a paginated example data.json');
 });
