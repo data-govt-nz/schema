@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <title>Schema is a tool for creating dcat json from a csv</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.10/dist/semantic.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/app.js"></script>
+  </head>
+  <body>
+
+    <div class="ui text container">
+      <div class="ui segment">
+      <h1 class='ui dividing header'>Data.govt.nz Dcat Generator</h1>
+      <a href='https://github.com/data-govt-nz/schema' rel='nofollow'>
+        Clone me on github ond run me anywhere
+      </a>
+      <p>
+          Part of moving to the CKAN data portal is improving our adaoption of international standards that aid in interoperability. One of these is the data.json standard that was put together as part of the US Project Open Data initiaive and has since been adopted by many other countries as a consistent way to express stocktakes of open data at an agency level.
+      </p>
+      <p>The idea here is to replace the current and dated ATOM/RSS feed standard which is no longer fit for purpose.</p>
+      <p>The data.json schema:</p>
+      <ul>
+        <li>is able to represent individual file level resources for example you might have a csv, kml, shp file of the same data set.</li>
+        <li>is an international standard used by many other government data portals.</li>
+        <li>allows for easy automation of harvesting into the the new CKAN data portal.</li>
+      </ul>
+      </div>
+    </div>
+
+    <div class="ui text container csv-upload-form">
+      <div class="ui segment">
+        <h1 class='ui dividing header'>Convert your csv to DCAT</h1>
+        <p>Upload a csv and the url where you will be hosting the created json file</p>
+        <p><a href="/example.csv">Download the example csv content here</a></p>
+        <form class='ui form' method="post" action="/submit" enctype="multipart/form-data">
+          <div class="field">
+            <label>Source URL
+            <input required type="text" name='source_url' placeholder='<yoursite>/data.json'/>
+            </label>
+          </div>
+          <div class="field">
+            <label>
+              Source CSV
+              <input required type="file" name="csv_file" id="">
+            </label>
+          </div>
+          <button class='ui button primary' type="submit">Create a dcat API endpoint</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
