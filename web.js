@@ -67,6 +67,8 @@ app.get('/api/:id/data.json', (req, res) => {
     return
   }
   res.header('Content-Type', 'application/json')
+  res.header(`Content-Disposition`, `attachment; filename="data.json"`)
+  res.header('Content-Transfer-Encoding', 'binary')
   res.status(200);
   res.send(GLOBAL_DATA[req.params.id].dcat)
 })
