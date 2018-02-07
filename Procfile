@@ -1,1 +1,1 @@
-web: node pager-test.js
+web: node web.js
