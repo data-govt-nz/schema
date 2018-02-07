@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>Schema is a tool for creating dcat json from a csv</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.10/dist/semantic.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+  </head>
+  <body>
+
+    <div class="ui text container csv-upload-form">
+      <div class="ui segment">
+        <h1 class='ui dividing header'>Convert CSV to DCAT json</h1>
+        <ol class="ui list">
+          <li>Find the data sources in your organization</li>
+          <li>Download the <a href="/example.csv">example CSV</a> and update it with your information</li>
+          <li>Upload your csv and convert it into a data.json dataset file</li>
+        </ol>
+        </p>
+        <form class='ui form' method="post" action="/submit" enctype="multipart/form-data">
+          <div class="field">
+            <div class="ui pointing below basic red label">Enter the base url of your data.json host</div>
+            <input required type="text" name='source_url' placeholder='<yoursite>/data.json'/>
+          </div>
+          <div class="field">
+              <input required type="file" name="csv_file" id="">
+              <div class="ui pointing basic red label">Upload the csv with your dataset information</div>
+          </div>
+          <button class='ui button green' type="submit">Download your data.json</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
