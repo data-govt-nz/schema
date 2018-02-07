@@ -12,6 +12,10 @@ const upload = multer({storage: multer.memoryStorage()})
  */
 const GLOBAL_DATA = {};
 
+// set the port of our application
+// process.env.PORT lets the port be set by Heroku
+const port = process.env.PORT || 3000;
+
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/', (req, res) => {
@@ -76,7 +80,7 @@ app.get('/api/:id/data.json', (req, res) => {
 app.use('/static', express.static('static'))
 
 
-app.listen(3000, () => console.log('Example app listening on port 3000!'))
+app.listen(port, () => console.log('Example app listening on port 3000!'))
 
 /**
  * A simple utillity function for generating an (fake) GUID-4
