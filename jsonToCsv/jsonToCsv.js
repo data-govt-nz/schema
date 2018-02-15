@@ -10,6 +10,7 @@ const jsonResultToCsvRow = require('./lib/jsonResultToCsvRow')
 
 program
   .version('0.1.0')
+  .description('Tool for downloading an agency\'s existing data from data.govt in a format they can use to re-submit it via the schema tool.')
   .option('-a, --agency [agency]', 'CKAN agency identifier, eg: ministry-of-health')
   .option('-f, --file [fileName]', 'CSV filename to write to, eg: output.csv, defaults to: <agency-identifer>.csv')
   .option('-u, --url [url]', 'ckan url, eg: https://catalogue.data.govt.nz, defaults to: https://catalogue.data.govt.nz')
