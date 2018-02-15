@@ -1,6 +1,9 @@
 'use strict'
 const jsonpath = require('jsonpath')
 const fetch = require('node-fetch')
+const json2csv = require('json2csv')
+const flatten = require('lodash.flatten')
+const uniq = require('lodash.uniq')
 const jsonResultToCsvRow = require('./lib/jsonResultToCsvRow')
 const url = 'https://catalogue.data.govt.nz/api/action/package_search?fq=organization:ministry-of-health'
 const fs = require('fs')
@@ -17,11 +20,20 @@ function mapObjects (jsonInput) {
 
 async function convertOnlineReport () {
   const response = await fetch(url)
-  const data = await response.json()
+  const body = await response.json()
 
-  const mappedObjects = mapObjects(data)
-  const stringifiedMappedObjects = JSON.stringify(mappedObjects)
-  fs.writeFileSync('./output.csv', stringifiedMappedObjects)
+  const data = mapObjects(body)
+  const fields = getHeaderFieldNames(data)
+  const csv = json2csv({data, fields})
+  fs.writeFileSync('./output.csv', csv)
+  console.log('Finished, written to file.')
+}
+
+function getHeaderFieldNames (data) {
+  const nestedFields = data.map(obj => Object.keys(obj))
+  const flattenedFields = flatten(nestedFields)
+  const uniqueFields = uniq(flattenedFields)
+  return uniqueFields
 }
 
 convertOnlineReport()
