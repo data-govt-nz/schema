@@ -1,0 +1,17 @@
+{
+  "name": "jsontocsv",
+  "version": "1.0.0",
+  "description": "",
+  "main": "jsonToCsv.js",
+  "scripts": {
+    "test": "jest --watch"
+  },
+  "author": "Ed Robinson",
+  "license": "ISC",
+  "dependencies": {
+    "jsonpath": "1.0.0"
+  },
+  "devDependencies": {
+    "jest": "22.3.0"
+  }
+}
