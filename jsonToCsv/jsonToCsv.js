@@ -13,6 +13,7 @@ program
   .description('Tool for downloading an agency\'s existing data from data.govt in a format they can use to re-submit it via the schema tool.')
   .option('-a, --agency [agency]', 'CKAN agency identifier, eg: ministry-of-health')
   .option('-f, --file [fileName]', 'CSV filename to write to, eg: output.csv, defaults to: <agency-identifer>.csv')
+  .option('-r, --row [count]', 'Number of records to be download, defaults to: 1000')
   .option('-u, --url [url]', 'ckan url, eg: https://catalogue.data.govt.nz, defaults to: https://catalogue.data.govt.nz')
   .parse(process.argv)
 
@@ -23,7 +24,8 @@ if (!agencyIdentifier) {
   process.exit()
 }
 const host = program.url || 'https://catalogue.data.govt.nz'
-const url = `${host}/api/action/package_search?fq=organization:${agencyIdentifier}&rows=1000`
+const recordCount = program.row || 1000
+const url = `${host}/api/action/package_search?fq=organization:${agencyIdentifier}&rows=${recordCount}`
 const fileName = program.file || agencyIdentifier + '.csv'
 
 convertOnlineReport()
