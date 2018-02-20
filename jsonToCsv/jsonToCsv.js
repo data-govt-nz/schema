@@ -17,7 +17,6 @@ program
   .parse(process.argv)
 
 const agencyIdentifier = program.agency
-console.log(agencyIdentifier)
 
 if (!agencyIdentifier) {
   console.error('--agency CKAN agency identifier, eg: ministry-of-health, is a required parameter. try `node jsonToCsv.js --agency ministry-of-health`')
