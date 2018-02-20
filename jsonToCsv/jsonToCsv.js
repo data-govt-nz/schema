@@ -24,7 +24,7 @@ if (!agencyIdentifier) {
   process.exit()
 }
 const host = program.url || 'https://catalogue.data.govt.nz'
-const url = `${host}/api/action/package_search?fq=organization:${agencyIdentifier}`
+const url = `${host}/api/action/package_search?fq=organization:${agencyIdentifier}&rows=1000`
 const fileName = program.file || agencyIdentifier + '.csv'
 
 convertOnlineReport()
