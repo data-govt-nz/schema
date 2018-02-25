@@ -19,8 +19,6 @@ node `8.9.4` and npm `5.6.0`
 **Options**
 
 ```
-node jsonToCsv.js -help                
-
   Usage: jsonToCsv [options]
 
   Tool for downloading an agency's existing data from data.govt in a format they can use to re-submit it via the schema tool.
@@ -31,6 +29,7 @@ node jsonToCsv.js -help
     -V, --version          output the version number
     -a, --agency [agency]  CKAN agency identifier, eg: ministry-of-health
     -f, --file [fileName]  CSV filename to write to, eg: output.csv, defaults to: <agency-identifer>.csv
+    -r, --row [count]      Number of records to be download, defaults to: 1000
     -u, --url [url]        ckan url, eg: https://catalogue.data.govt.nz, defaults to: https://catalogue.data.govt.nz
     -h, --help             output usage information
 ```
