@@ -1,0 +1,36 @@
+{
+    "result": {
+        "results": [{
+            "title": "New Zealand Public Sector Websites",
+            "notes": "List of websites owned and administered by the New Zealand Public Sector. The Department of Internal Affairs acknowledges this list has been compiled to the best of their knowledge, but it is not a complete list of all Public Sector websites. This list will be updated as the Department becomes aware of required updates.",
+            "url": "https://webtoolkit.govt.nz/guidance/domain-names/new-zealand-public-sector-websites/",
+            "license_url": "https://creativecommons.org/licenses/by/4.0",
+            "tags": [{
+                "state": "active",
+                "display_name": "websites, open government"
+            }, {
+                "state": "active",
+                "display_name": "url"
+            }],
+            "issued": "2011-08-26",
+            "modified": "2015-04-01",
+            "author": "Department of Internal Affairs",
+            "author_email": "data-enquiries@moh.govt.nz",
+            "maintainer": "Jane Doe",
+            "maintainer_phone": "4123456789",
+            "maintainer_email": "contact@agency.govt.nz",
+
+
+            "frequency_of_update": "Annual",
+            "theme": "Fiscal, tax and economics",
+            "temporal": "2011-08-26/2015-04-01",
+            "spatial": "{\"type\":\"Polygon\",\"coordinates\":[[[165.6298828125,-47.5468715989],[179.3408203125,-47.5468715989],[179.3408203125,-33.9068955513],[165.6298828125,-33.9068955513],[165.6298828125,-47.5468715989]]]}",
+            "resources": [{
+                "url": "https://webtoolkit.govt.nz/files/PublicSectorWebsites01April2015.csv",
+                "name": "Snapshot at 15 March 2017",
+                "format": "CSV",
+                "size": "58Kb"
+            }]
+        }]
+    }
+}

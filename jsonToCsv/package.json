@@ -1,0 +1,26 @@
+{
+  "name": "jsontocsv",
+  "version": "1.0.0",
+  "description": "",
+  "main": "jsonToCsv.js",
+  "scripts": {
+    "test": "jest --watch"
+  },
+  "engines": {
+    "node": "8.9.4",
+    "npm": "5.6.0"
+  },
+  "author": "Ed Robinson",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "2.14.1",
+    "json2csv": "3.11.5",
+    "jsonpath": "1.0.0",
+    "lodash.flatten": "4.4.0",
+    "lodash.uniq": "4.5.0",
+    "node-fetch": "2.0.0"
+  },
+  "devDependencies": {
+    "jest": "22.3.0"
+  }
+}
