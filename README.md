@@ -133,7 +133,7 @@ The data.json file should have ASCII or UTF-8 character encoding (as per the JSO
 
 ## Comparison with USA data.json schema
 
-The NZ data.json format is based on both the [Data.gov.uk data.json](http://guidance.data.gov.uk/dcat_fields.html) and the [Project Open Data data.json schema](https://project-open-data.cio.gov/v1.1/schema/) used by the U.S. Federal Government. Both are derivatives of the [DCAT (data catalog vocabulary)](https://www.w3.org/TR/vocab-dcat/) schema standard.
+The NZ data.json format is based on both the [Data.gov.uk data.json](https://guidance.data.gov.uk/publish_and_manage_data/harvest_or_add_data/harvest_data/dcat/#accepted-dcat-and-data-json-fields) and the [Project Open Data data.json schema](https://project-open-data.cio.gov/v1.1/schema/) used by the U.S. Federal Government. Both are derivatives of the [DCAT (data catalog vocabulary)](https://www.w3.org/TR/vocab-dcat/) schema standard.
 
 There are a few conscious differences that are listed here for reference:
 
@@ -151,5 +151,4 @@ See [LICENSE.md](LICENSE.md)
 See [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## Maintainer
- - Cam Findlay <cam.findlay@dia.govt.nz>
  - Data.govt.nz team <info@data.govt.nz>
