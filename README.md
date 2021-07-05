@@ -1,7 +1,7 @@
 # data.govt.nz data.json schema
 The data.json metadata schema used to harvest datasets from agencies on data.govt.nz
 
-Part of moving to the CKAN data portal is improving our adaoption of international standards that aid in interoperability. One of these is the data.json standard that was put together as part of the US Project Open Data initiaive and has since been adopted by many other countries as a consistent way to express stocktakes of open data at an agency level.
+Part of moving to the CKAN data portal is improving our adoption of international standards that aid in interoperability. One of these is the data.json standard that was put together as part of the US Project Open Data initiative and has since been adopted by many other countries as a consistent way to express stocktakes of open data at an agency level.
 
 The idea here is to replace the current and dated ATOM/RSS feed standard which is no longer fit for purpose.
 
@@ -9,7 +9,7 @@ The data.json schema:
 
  - is able to represent individual file level resources for example you might have a csv, kml, shp file of the same data set.
  - is an international standard used by many other government data portals.
- - allows for easy automation of harvesting into the the new CKAN data portal.
+ - allows for easy automation of harvesting into the new CKAN data portal.
 
  ## data.govt.nz data.json schema
 
@@ -19,7 +19,7 @@ The data.json schema:
 | --------------- | -------------- | ------------- | -------- |
 | title | Yes | "New Zealand Public Sector Websites" | A good descriptive title of your dataset. |
 | description | Yes | "List of websites owned and administered by the New Zealand Public Sector. The Department of Internal Affairs acknowledges this list has been compiled to the best of their knowledge, but it is not a complete list of all Public Sector websites. This list will be updated as the Department becomes aware of required updates." | A longer description about the dataset which may include methodology, caveats and other related information to help others use appropriately |
-| identifier | Yes |  For example `https://webtoolkit.govt.nz/guidance/domain-names/new-zealand-public-sector-websites/` or `f572a794d5aa323824ccbc72f138fc2233b54ad141a00eba` | A string that identifies the dataset now and in the future, ideally even if the dataset's title changes. If the dataset is already in a data catalogue, supply the URL of the dataset page, or unique catalogue identifier. If it is not catalogued already you can assign it a random hexademical string of 24 digits or more. Ideally the identifier should be globally unique - not just unique to the publisher - so a URI is highly recommended. |
+| identifier | Yes |  For example `https://webtoolkit.govt.nz/guidance/domain-names/new-zealand-public-sector-websites/` or `f572a794d5aa323824ccbc72f138fc2233b54ad141a00eba` | A string that identifies the dataset now and in the future, ideally even if the dataset's title changes. If the dataset is already in a data catalogue, supply the URL of the dataset page, or unique catalogue identifier. If it is not catalogued already you can assign it a random hexadecimal string of 24 digits or more. Ideally the identifier should be globally unique - not just unique to the publisher - so a URI is highly recommended. |
 | license | Yes | `https://creativecommons.org/licenses/by/4.0/`| Must be a license URI from those recommended in [NZGOAL](https://www.ict.govt.nz/guidance-and-resources/open-government/new-zealand-government-open-access-and-licensing-nzgoal-framework/) or empty string if not licensed. |
 | keyword | Optional | `"keyword": {"websites", "open government", "url"}` | Keywords help to connect related datasets. Each keyword should only include numbers and letters (alphanumeric). |
 | issued | Optional | `2011-08-26` | Date that the data was first published. Formats allowed are: 'YYYY-MM-DD', 'YYYY-MM', 'YYYY' or 'YYYY-MM-DDTHH:MM:SS.mmmmmm' (according to ISO8601) |
@@ -78,13 +78,13 @@ e.g.
 ```
 
 ## Generating a data.json from a CSV file
-This GitHub repositoy also contains a small Node.js application to convert a stocktake of open datasets and accompanying files or API endpoints into the correct data.json format for auto harvesting on data.govt.nz.
+This GitHub repository also contains a small Node.js application to convert a stocktake of open datasets and accompanying files or API endpoints into the correct data.json format for auto harvesting on data.govt.nz.
 
 ### Populating your CSV
 The name of the columns generally references the property names in the data.json schema (see above for the names, descriptions and examples of the metadata to supply. To make filling out your stocktake easier we have made a few additionals to the columns held in the CSV file so you can provide certain metadata in plain English rather than the more technical standards (however if you'd rather hold your stocktake in the ISO standards the conversion tool will respect this).
 
 ### CSV column dot notation for nested metadata
-The converstion tool uses a dot (.) notation to store nested values as they appear in the data.json file.
+The conversion tool uses a dot (.) notation to store nested values as they appear in the data.json file.
 For example:
 
 `"publisher": {"name": ""}` in the json file would be stored in the CSV file column with the heading `publisher.name`.
@@ -108,7 +108,7 @@ If your URL relates to an API endpoint you can replace `downloadURL` with `acces
 #### Option 1: Run the tool yourself
  1. Install `node.js` and the `npm` package manager which you can get at [https://nodejs.org/en/download/](https://nodejs.org/en/download/).
  2. Install [`git`](https://git-scm.com/downloads) and clone this git repository to your computer.
- 3. Using the command line or other tool, run the `node install` command, this will install any other modules and related dependancies required to run the data.json conversion tool.
+ 3. Using the command line or other tool, run the `node install` command, this will install any other modules and related dependencies required to run the data.json conversion tool.
  4. Navigate into the root directory of this code and run the following command to perform the conversion: `node convert.js --url https://www.YOURAGENCY.govt.nz --file /PATH/TO/FILE/datasets.csv --output /PATH/TO/DIRECTORY`
 
  * --url: your agency website address.
@@ -119,7 +119,7 @@ If your URL relates to an API endpoint you can replace `downloadURL` with `acces
 #### Option 2: Contact data.govt.nz support
 If running a Node tool is not for you, then you can get in touch with the data.govt.nz support team to arrange to run your CSV file through the tool at our end. If your CSV is well maintained and in good order this should not take long and if offered as a free service. If you require some help or a clean up of your CSV stocktake that takes more than an hour we may charge an hourly rate for this additional service (our team will discuss this with you before running the conversion tool).
 
-You can contact data.govt.nz suppport at [info@data.govt.nz](mailto:info@data.govt.nz) to arrange this service.
+You can contact data.govt.nz support at [info@data.govt.nz](mailto:info@data.govt.nz) to arrange this service.
 
 ## Where to put your data.json file
 
@@ -140,7 +140,7 @@ There are a few conscious differences that are listed here for reference:
 | Field | Change | Explanation |
 | ----- | ------ | ----------- |
 | bureauCode, programCode, primaryITInvestmentUII, systemOfRecords, dataQuality | not required | They are codes specific to US Federal Government |
-| spatial | Formatted with GeoJSON | GeoJSON is analagous to GML but preferred. Place name strings are not preferred as they can be ambiguous. |
+| spatial | Formatted with GeoJSON | GeoJSON is analogous to GML but preferred. Place name strings are not preferred as they can be ambiguous. |
 | theme | The values known group values from data.govt.nz CKAN portal, rather than simply strings. | Data.govt.nz has a group taxonomy. Strings related to the data's specific topics can go in the keywords field. |
 
 
